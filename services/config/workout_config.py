@@ -1,5 +1,5 @@
 EXERCISES = [
-    "squats",
+    "Squats",
     "Push-Ups",
     "Biceps Curls (Dumbbell)",
     "Shoulder Press",
