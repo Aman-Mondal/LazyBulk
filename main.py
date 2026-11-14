@@ -1,7 +1,9 @@
+import os
 import streamlit as st
 from services.auth.login import render_login
 from services.state.defaultSession import initial_session_default
 from services.config.workout_config import EXERCISES
+from services.ui.style_loader import load_css, inject_local_font
 
 def main():
     st.set_page_config(
@@ -10,7 +12,9 @@ def main():
         initial_sidebar_state="expanded",
         layout="centered"
     )
-
+    
+    inject_local_font(os.path.join(os.getcwd(),"static","Oxanium-Regular.ttf"),"Oxanium-Regular")
+    load_css(os.path.join(os.getcwd(),"static","style.css"))
     if not render_login():
         return
 

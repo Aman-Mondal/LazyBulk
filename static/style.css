@@ -1,0 +1,382 @@
+
+/* LAZYBULK — ESPRESSO & CREAM */
+
+:root {
+    --espresso: #382820;
+    --espresso-deep: #291D18;
+    --espresso-soft: #594438;
+
+    --cream: #F3E8DC;
+    --cream-surface: #E8D8C8;
+    --cream-border: #D7C3B0;
+
+    --caramel: #E8AD70;
+    --caramel-hover: #F0BC85;
+
+    --text-dark: #382820;
+    --text-light: #F8EEE5;
+    --text-muted: #AFA096;
+
+    --radius: 8px;
+}
+
+/* GLOBAL RESET & APP BACKGROUND */
+
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+.stApp {
+    margin: 0;
+    min-height: 100%;
+}
+
+.stApp {
+    background: var(--cream) !important;
+    color: var(--text-dark);
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* Remove Streamlit's default content width restrictions */
+
+.stApp header {
+    background: transparent !important;
+}
+
+.stMainBlockContainer,
+.block-container {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+/* ===== LAZYBULK: FORCE FULL-WIDTH SPLIT LOGIN ===== */
+
+/* Remove Streamlit's outer spacing */
+.stMainBlockContainer,
+.block-container,
+[data-testid="stMainBlockContainer"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Make the login columns span the viewport */
+.stApp [data-testid="stHorizontalBlock"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 0 !important;
+    align-items: stretch !important;
+}
+
+/* LEFT: ESPRESSO */
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child {
+    background-color: #382820 !important;
+    color: #F3E8DC !important;
+    min-height: 100vh !important;
+    padding: 8vh 5vw !important;
+    justify-content: center !important;
+}
+
+/* LEFT: force readable branding colors */
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child h1,
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child h2,
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child h3 {
+    color: #F3E8DC !important;
+}
+
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child p {
+    color: #D8C6B8 !important;
+}
+
+/* RIGHT: CREAM */
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child {
+    background-color: #F3E8DC !important;
+    color: #382820 !important;
+    min-height: 100vh !important;
+    padding: 8vh 5vw !important;
+    justify-content: center !important;
+}
+
+/* RIGHT: headings and text */
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child h1,
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child h2,
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child h3,
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child p {
+    color: #382820 !important;
+}
+
+/* Form surface */
+.stApp [data-testid="stForm"] {
+    background-color: #F8F0E8 !important;
+    border: 1px solid #D7C3B0 !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 12px 30px rgba(56, 40, 32, 0.08) !important;
+}
+
+/* Inputs */
+.stApp input {
+    background-color: #FFF9F3 !important;
+    color: #382820 !important;
+    border-color: #D7C3B0 !important;
+}
+
+/* Buttons */
+.stApp [data-testid="stFormSubmitButton"] button {
+    background-color: #E8AD70 !important;
+    color: #382820 !important;
+    border: 1px solid #E8AD70 !important;
+    border-radius: 5px !important;
+    font-weight: 700 !important;
+}
+
+/* Keep branding accent */
+.stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child p:first-child {
+    color: #E8AD70 !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .stApp [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+
+    .stApp [data-testid="stHorizontalBlock"] > div[data-testid="column"] {
+        min-height: auto !important;
+        padding: 3rem 1.5rem !important;
+        width: 100% !important;
+    }
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Inter", "Segoe UI", sans-serif !important;
+    color: inherit;
+    letter-spacing: -0.035em;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.08 !important;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 3vw, 2.7rem) !important;
+    font-weight: 750 !important;
+}
+
+h3 {
+    font-weight: 700 !important;
+}
+
+p,
+label,
+li,
+.stMarkdown {
+    line-height: 1.65;
+}
+
+/* =========================================================
+   BRANDING PANEL
+========================================================= */
+
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:first-child h1,
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:first-child h2,
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:first-child h3 {
+    color: var(--text-light) !important;
+}
+
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:first-child p {
+    color: #D8C6B8 !important;
+}
+
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:first-child hr {
+    border-color: #665044 !important;
+}
+
+/* =========================================================
+   LOGIN PANEL
+========================================================= */
+
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:last-child h1,
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:last-child h2,
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:last-child h3 {
+    color: var(--text-dark) !important;
+}
+
+[data-testid="stHorizontalBlock"]
+> [data-testid="column"]:last-child p {
+    color: var(--espresso-soft);
+}
+
+/* Form card */
+
+[data-testid="stForm"] {
+    background: rgba(255, 255, 255, 0.42) !important;
+    border: 1px solid var(--cream-border) !important;
+    border-radius: var(--radius) !important;
+
+    padding: 1.75rem !important;
+    margin-top: 1.5rem !important;
+
+    box-shadow: 0 12px 35px rgba(56, 40, 32, 0.06);
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+input,
+textarea,
+[data-baseweb="select"] > div {
+    background: #FFF9F3 !important;
+    color: var(--text-dark) !important;
+
+    border: 1px solid var(--cream-border) !important;
+    border-radius: 5px !important;
+
+    box-shadow: none !important;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--caramel) !important;
+    box-shadow: 0 0 0 2px rgba(232, 173, 112, 0.2) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9C8B7D !important;
+}
+
+label,
+[data-testid="stWidgetLabel"] p {
+    color: var(--text-dark) !important;
+    font-weight: 600 !important;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.stButton button,
+.stFormSubmitButton button,
+[data-testid="stBaseButton-primary"] {
+    background: var(--caramel) !important;
+    color: var(--espresso-deep) !important;
+
+    border: 1px solid var(--caramel) !important;
+    border-radius: 5px !important;
+
+    min-height: 46px;
+    font-weight: 750 !important;
+
+    transition:
+        background 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.stButton button:hover,
+.stFormSubmitButton button:hover,
+[data-testid="stBaseButton-primary"]:hover {
+    background: var(--caramel-hover) !important;
+    border-color: var(--caramel-hover) !important;
+    box-shadow: 0 5px 16px rgba(56, 40, 32, 0.12);
+}
+
+.stButton button:active,
+.stFormSubmitButton button:active {
+    transform: translateY(1px);
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+[data-testid="stSidebar"] {
+    background: var(--espresso-deep) !important;
+}
+
+[data-testid="stSidebar"] * {
+    color: var(--text-light);
+}
+
+/* =========================================================
+   DASHBOARD SURFACES
+========================================================= */
+
+[data-testid="stMetric"],
+[data-testid="stForm"],
+[data-testid="stExpander"] {
+    border-radius: var(--radius);
+}
+
+[data-testid="stMetric"] {
+    background: #FFF9F3 !important;
+    border: 1px solid var(--cream-border) !important;
+    padding: 1.25rem !important;
+}
+
+[data-testid="stMetricValue"],
+[data-testid="stMetricLabel"] {
+    color: var(--text-dark) !important;
+}
+
+[data-testid="stTabs"] button {
+    color: var(--espresso-soft) !important;
+}
+
+[data-testid="stTabs"] button[aria-selected="true"] {
+    color: var(--espresso) !important;
+    border-bottom-color: var(--caramel) !important;
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUT
+========================================================= */
+
+@media (max-width: 768px) {
+    [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="column"]:first-child,
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="column"]:last-child {
+        min-height: auto;
+        padding: 3rem 1.5rem !important;
+    }
+
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    [data-testid="stForm"] {
+        padding: 1.25rem !important;
+    }
+}
