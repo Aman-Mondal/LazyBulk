@@ -1,9 +1,11 @@
 import os
 import streamlit as st
 from services.auth.login import render_login
+from services.persistence.exercise_repo import init_db
 from services.state.defaultSession import initial_session_default
 from services.config.workout_config import EXERCISES
 from services.ui.style_loader import load_css, inject_local_font
+
 
 def main():
     st.set_page_config(
@@ -15,6 +17,10 @@ def main():
     
     # inject_local_font(os.path.join(os.getcwd(),"static","Oxanium-Regular.ttf"),"Oxanium-Regular")
     # load_css(os.path.join(os.getcwd(),"static","style.css"))
+
+    init_db()
+
+
     if not render_login():
         return
 

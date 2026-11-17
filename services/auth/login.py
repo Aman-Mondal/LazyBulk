@@ -1,4 +1,5 @@
 import streamlit as st
+from services.persistence.exercise_repo import get_or_create_user
 
 def render_login():
     if st.session_state.get("user_id") is not None:
@@ -59,9 +60,11 @@ def render_login():
                 st.error("Username cannot be empty!")
                 return False
 
-            st.session_state["username"] = username.strip()
-            st.session_state["user_id"] = "i01"
+            user = get_or_create_user(username)
 
+            st.session_state["user_id"] = "id"
+            st.session_state["username"] = user["name"]
+        
             st.rerun()
 
     return False
