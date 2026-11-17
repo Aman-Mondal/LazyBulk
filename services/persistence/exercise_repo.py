@@ -35,4 +35,30 @@ def init_db():
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+# Creating/Inserting a New User
+def create_user(username):
+    connection = _get_connection()
 
+    with connection:
+        connection.execute("""
+            INSERT INTO users (name) (?) 
+        """,(username))
+
+    return get_user(username)
+
+# Searching a user
+def get_user(username):
+    connection = _get_connection()
+
+    return connection.execute("""
+        SELECT * FROM users WHERE name = ?
+    """, (username)).fetchone()
+
+#Check before creating a new user
+def get_or_create_user(username):
+    user = get_user(username)
+
+    if user is None:
+        user = create_user(username)
+
+    return user
