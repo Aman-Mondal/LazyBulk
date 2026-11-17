@@ -62,3 +62,32 @@ def get_or_create_user(username):
         user = create_user(username)
 
     return user
+
+def add_exercise(user_id, exercise_name, reps, sets, time):
+    connection = _get_connection()
+
+    with connection:
+        exists = connection.execute("""
+            SELECT * FROM exercises
+            WHERE user_id = ? AND name = ? AND Date('created_on') = Date('now')
+        """, (user_id, exercise_name)).fetchone()
+
+        if exists:
+            connection.execute("""
+                UPDATE exercises
+                SET reps = reps + ?, sets = sets + ?, time = time + ?
+                WHERE id = ?
+            """,(reps, sets,time,exists['id']))
+        else:
+            connection.execute("""
+                INSERT INTO exercises (user_id, exercise_name,reps,sets,time)
+                VALUES (?,?,?,?,?)
+            """,(user_id, exercise_name, reps,sets,time))
+
+def get_users_exercises(user_id):
+    connection = _get_connection()
+
+    return connection.execute("""
+        SELECT * FROM exercises
+        WHERE user_id = ?
+    """, (user_id)).fetchall()
