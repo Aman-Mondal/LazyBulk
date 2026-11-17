@@ -13,8 +13,8 @@ def main():
         layout="centered"
     )
     
-    inject_local_font(os.path.join(os.getcwd(),"static","Oxanium-Regular.ttf"),"Oxanium-Regular")
-    load_css(os.path.join(os.getcwd(),"static","style.css"))
+    # inject_local_font(os.path.join(os.getcwd(),"static","Oxanium-Regular.ttf"),"Oxanium-Regular")
+    # load_css(os.path.join(os.getcwd(),"static","style.css"))
     if not render_login():
         return
 

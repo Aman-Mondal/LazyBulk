@@ -37,8 +37,6 @@ def render_login():
             """,
             unsafe_allow_html=True
         )
-        st.markdown("---")
-        st.caption("YOUR FITNESS JOURNEY STARTS HERE")
 
     # Right side: Login form
     with right:
